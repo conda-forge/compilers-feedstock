@@ -1,0 +1,13 @@
+c_compiler:
+- vs2008
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- vs2008
+fortran_compiler:
+- flang
+zip_keys:
+- - c_compiler
+  - cxx_compiler
