@@ -35,7 +35,7 @@
 
 package:
   name: compilers
-  version: 1.0.0
+  version: 1.0.1
 
 build:
   number: 0
@@ -83,9 +83,10 @@ outputs:
       host:
         - {{ compiler('c') }}
         # Depend on the other metapackages to prevent making duplicate symlinks
-        - binutils  # [unix]
+        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
       run:
         - {{ compiler('c') }}
+        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
     script: build-symlinks.sh  # [unix]
     test:
       commands:
@@ -119,10 +120,11 @@ outputs:
       host:
         - {{ compiler('cxx') }}
         # Depend on the other metapackages to prevent making duplicate symlinks
-        - binutils  # [unix]
-        - c-compiler  # [linux]
+        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
+        - {{ pin_subpackage('c-compiler', exact=True) }}  # [linux]
       run:
         - {{ compiler('cxx') }}
+        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
     script: build-symlinks.sh  # [unix]
     test:
       commands:
@@ -156,9 +158,10 @@ outputs:
       host:
         - {{ compiler('fortran') }}
         # Depend on the other metapackages to prevent making duplicate symlinks
-        - binutils  # [unix]
+        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
       run:
         - {{ compiler('fortran') }}
+        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
     script: build-symlinks.sh  # [linux] gfortran is already available on OSX
     test:
       commands:
