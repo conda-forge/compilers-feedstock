@@ -200,7 +200,9 @@ outputs:
 
 about:
   home: https://conda-forge.org
-  license: BSD
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
   summary: A metapackage to obtain compilers
   description: |
     This package is a generic way to obtain the compilers for your system
