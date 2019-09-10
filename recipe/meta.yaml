@@ -3,7 +3,7 @@
 {% set fortran_compiler = compiler('fortran').split('_')[0] %}
 
 {% set commands = {
-  'binutils': {
+  'binutils-meta': {
     'linux': ['ar', 'as', 'ld', 'nm', 'size', 'strings', 'strip',
               'addr2line', 'c++filt', 'dwp', 'elfedit', 'gprof', 'ld.bfd',
               'ld.gold', 'objcopy', 'objdump', 'ranlib', 'readelf'],
@@ -35,13 +35,13 @@
 
 package:
   name: compilers
-  version: 1.0.1
+  version: 1.0.2
 
 build:
-  number: 1
+   number: 0
 
 outputs:
-  - name: binutils
+  - name: binutils-meta
     requirements:
       host:
         - binutils_linux-64  # [linux]
@@ -57,8 +57,8 @@ outputs:
     test:
       commands:
         - $LD --help  # [linux]
-{%- for command in commands['binutils']['linux'] %}  # [linux]
-{%- for command in commands['binutils']['osx'] %}  # [osx]
+{%- for command in commands['binutils-meta']['linux'] %}  # [linux]
+{%- for command in commands['binutils-meta']['osx'] %}  # [osx]
         - {{ command }} --help > /dev/null  # [linux] Return code for --help is 1 on OSX
         - echo "Checking {{ command }} resolves to a path containing ${BUILD}"  # [unix]
         - readlink $(which {{ command }}) | grep -q "${BUILD}"  # [unix]
@@ -83,10 +83,10 @@ outputs:
       host:
         - {{ compiler('c') }}
         # Depend on the other metapackages to prevent making duplicate symlinks
-        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
+        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
       run:
         - {{ compiler('c') }}
-        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
+        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
     script: build-symlinks.sh  # [unix]
     test:
       commands:
@@ -120,11 +120,11 @@ outputs:
       host:
         - {{ compiler('cxx') }}
         # Depend on the other metapackages to prevent making duplicate symlinks
-        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
+        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
         - {{ pin_subpackage('c-compiler', exact=True) }}  # [linux]
       run:
         - {{ compiler('cxx') }}
-        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
+        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
     script: build-symlinks.sh  # [unix]
     test:
       commands:
@@ -158,10 +158,10 @@ outputs:
       host:
         - {{ compiler('fortran') }}
         # Depend on the other metapackages to prevent making duplicate symlinks
-        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
+        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
       run:
         - {{ compiler('fortran') }}
-        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
+        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
     script: build-symlinks.sh  # [linux] gfortran is already available on OSX
     test:
       commands:
@@ -188,7 +188,7 @@ outputs:
   - name: compilers
     requirements:
       run:
-        - {{ pin_subpackage('binutils', exact=True) }}  # [unix]
+        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
         - {{ pin_subpackage('c-compiler', exact=True) }}
         - {{ pin_subpackage('cxx-compiler', exact=True) }}
         - {{ pin_subpackage('fortran-compiler', exact=True) }}
@@ -200,7 +200,9 @@ outputs:
 
 about:
   home: https://conda-forge.org
-  license: BSD
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
   summary: A metapackage to obtain compilers
   description: |
     This package is a generic way to obtain the compilers for your system

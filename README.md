@@ -23,14 +23,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Appveyor</td>
-    <td>
-      <a href="https://ci.appveyor.com/project/conda-forge/compilers-feedstock/branch/master">
-        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/compilers-feedstock/master.svg?label=Windows">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
@@ -77,7 +70,12 @@ Current build status
       </details>
     </td>
   </tr>
-![ppc64le disabled](https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg)
+  <tr>
+    <td>Linux_ppc64le</td>
+    <td>
+      <img src="https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg" alt="ppc64le disabled">
+    </td>
+  </tr>
 </table>
 
 Current release info
@@ -85,7 +83,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-binutils-green.svg)](https://anaconda.org/conda-forge/binutils) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/binutils.svg)](https://anaconda.org/conda-forge/binutils) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/binutils.svg)](https://anaconda.org/conda-forge/binutils) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/binutils.svg)](https://anaconda.org/conda-forge/binutils) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-binutils--meta-green.svg)](https://anaconda.org/conda-forge/binutils-meta) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/binutils-meta.svg)](https://anaconda.org/conda-forge/binutils-meta) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/binutils-meta.svg)](https://anaconda.org/conda-forge/binutils-meta) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/binutils-meta.svg)](https://anaconda.org/conda-forge/binutils-meta) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-c--compiler-green.svg)](https://anaconda.org/conda-forge/c-compiler) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/c-compiler.svg)](https://anaconda.org/conda-forge/c-compiler) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/c-compiler.svg)](https://anaconda.org/conda-forge/c-compiler) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/c-compiler.svg)](https://anaconda.org/conda-forge/c-compiler) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-compilers-green.svg)](https://anaconda.org/conda-forge/compilers) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/compilers.svg)](https://anaconda.org/conda-forge/compilers) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/compilers.svg)](https://anaconda.org/conda-forge/compilers) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/compilers.svg)](https://anaconda.org/conda-forge/compilers) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-cxx--compiler-green.svg)](https://anaconda.org/conda-forge/cxx-compiler) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/cxx-compiler.svg)](https://anaconda.org/conda-forge/cxx-compiler) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/cxx-compiler.svg)](https://anaconda.org/conda-forge/cxx-compiler) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/cxx-compiler.svg)](https://anaconda.org/conda-forge/cxx-compiler) |
@@ -100,16 +98,16 @@ Installing `compilers` from the `conda-forge` channel can be achieved by adding 
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `binutils, c-compiler, compilers, cxx-compiler, fortran-compiler` can be installed with:
+Once the `conda-forge` channel has been enabled, `binutils-meta, c-compiler, compilers, cxx-compiler, fortran-compiler` can be installed with:
 
 ```
-conda install binutils c-compiler compilers cxx-compiler fortran-compiler
+conda install binutils-meta c-compiler compilers cxx-compiler fortran-compiler
 ```
 
-It is possible to list all of the versions of `binutils` available on your platform with:
+It is possible to list all of the versions of `binutils-meta` available on your platform with:
 
 ```
-conda search binutils --channel conda-forge
+conda search binutils-meta --channel conda-forge
 ```
 
 
