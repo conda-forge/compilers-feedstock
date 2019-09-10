@@ -8,6 +8,8 @@ cxx_compiler:
 - vs2008
 fortran_compiler:
 - flang
+fortran_compiler_version:
+- '5'
 zip_keys:
 - - c_compiler
   - cxx_compiler
