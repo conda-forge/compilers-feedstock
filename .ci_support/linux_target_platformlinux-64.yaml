@@ -1,15 +1,9 @@
-BUILD:
-- aarch64-conda_cos7-linux-gnu
 c_compiler:
 - gcc
 c_compiler_version:
 - '7'
-cdt_arch:
-- aarch64
-cdt_name:
-- cos7
 channel_sources:
-- conda-forge,c4aarch64,defaults
+- conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -17,8 +11,10 @@ cxx_compiler:
 cxx_compiler_version:
 - '7'
 docker_image:
-- condaforge/linux-anvil-aarch64
+- condaforge/linux-anvil-comp7
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '7'
+target_platform:
+- linux-64
