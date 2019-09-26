@@ -7,7 +7,7 @@
     'linux': ['ar', 'as', 'ld', 'nm', 'size', 'strings', 'strip',
               'addr2line', 'c++filt', 'elfedit', 'gprof', 'ld.bfd',
               'objcopy', 'objdump', 'ranlib', 'readelf'] +
-              (['embedspu'] if target_platform == 'linux-ppc64le' else ['dwp', 'ld.gold']),
+              ([] if target_platform == 'linux-ppc64le' else ['dwp', 'ld.gold']),
     'osx': ['ar', 'as', 'ld', 'nm', 'size', 'strings', 'strip',
             'checksyms', 'codesign_allocate', 'indr', 'install_name_tool',
             'libtool', 'lipo', 'nmedit', 'otool', 'pagestuff', 'ranlib',
