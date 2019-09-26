@@ -36,7 +36,7 @@
 
 package:
   name: compilers
-  version: 1.0.3
+  version: 1.0.4
 
 build:
    number: 0
