@@ -44,11 +44,11 @@ outputs:
   - name: binutils-meta
     requirements:
       host:
-        - binutils_linux-64  # [linux]
+        - binutils_{{ target_platform }}  # [linux]
         - cctools  # [osx]
         - ld64  # [osx]
       run:
-        - binutils_linux-64  # [linux]
+        - binutils_{{ target_platform }}  # [linux]
         - cctools  # [osx]
         - ld64  # [osx]
     script: build-symlinks.sh  # [unix]
