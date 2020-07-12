@@ -5,18 +5,18 @@ Home: https://conda-forge.org
 
 Package license: BSD
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
-Summary: A metapackage to obtain binutils
+Summary: A metapackage to obtain a C compiler
 
-This package is a generic way to obtain binutils for your system
+This package is a generic way to obtain the C compiler for your system
 that conda-forge used to compile its ecosystem.  This compiler is,
 therefore, guaranteed to be ABI compatible with the conda packages
 you have installed.
 
 This compiler metapackage is a convenience ONLY for users.
 Do NOT use this package as a build or host dependency in other
-recipes.
+recipes.  Use the Jinja template function compiler('c') instead.
 
 
 Current build status
@@ -26,15 +26,15 @@ Current build status
 <table><tr>
     <td>Travis</td>
     <td>
-      <a href="https://travis-ci.org/conda-forge/compilers-feedstock">
-        <img alt="macOS" src="https://img.shields.io/travis/conda-forge/compilers-feedstock/master.svg?label=macOS">
+      <a href="https://travis-ci.com/conda-forge/compilers-feedstock">
+        <img alt="macOS" src="https://img.shields.io/travis/com/conda-forge/compilers-feedstock/master.svg?label=macOS">
       </a>
     </td>
   </tr><tr>
     <td>Drone</td>
     <td>
       <a href="https://cloud.drone.io/conda-forge/compilers-feedstock">
-        <img alt="linux" src="https://img.shields.io/drone/build/conda-forge/master.svg?label=Linux">
+        <img alt="linux" src="https://img.shields.io/drone/build/conda-forge/compilers-feedstock/master.svg?label=Linux">
       </a>
     </td>
   </tr>
@@ -51,24 +51,24 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_aarch64_target_platformlinux-aarch64</td>
+              <td>linux</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6168&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/compilers-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_target_platformlinux-aarch64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/compilers-feedstock?branchName=master&jobName=linux&configuration=linux_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_target_platformlinux-ppc64le</td>
+              <td>linux_aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6168&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/compilers-feedstock?branchName=master&jobName=linux&configuration=linux_ppc64le_target_platformlinux-ppc64le" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/compilers-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_target_platformlinux-64</td>
+              <td>linux_ppc64le</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6168&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/compilers-feedstock?branchName=master&jobName=linux&configuration=linux_target_platformlinux-64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/compilers-feedstock?branchName=master&jobName=linux&configuration=linux_ppc64le_" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -79,17 +79,10 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2008</td>
+              <td>win</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6168&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/compilers-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2008" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_c_compilervs2015</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6168&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/compilers-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/compilers-feedstock?branchName=master&jobName=win&configuration=win_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -105,7 +98,6 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-binutils--meta-green.svg)](https://anaconda.org/conda-forge/binutils-meta) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/binutils-meta.svg)](https://anaconda.org/conda-forge/binutils-meta) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/binutils-meta.svg)](https://anaconda.org/conda-forge/binutils-meta) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/binutils-meta.svg)](https://anaconda.org/conda-forge/binutils-meta) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-c--compiler-green.svg)](https://anaconda.org/conda-forge/c-compiler) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/c-compiler.svg)](https://anaconda.org/conda-forge/c-compiler) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/c-compiler.svg)](https://anaconda.org/conda-forge/c-compiler) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/c-compiler.svg)](https://anaconda.org/conda-forge/c-compiler) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-compilers-green.svg)](https://anaconda.org/conda-forge/compilers) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/compilers.svg)](https://anaconda.org/conda-forge/compilers) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/compilers.svg)](https://anaconda.org/conda-forge/compilers) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/compilers.svg)](https://anaconda.org/conda-forge/compilers) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-cxx--compiler-green.svg)](https://anaconda.org/conda-forge/cxx-compiler) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/cxx-compiler.svg)](https://anaconda.org/conda-forge/cxx-compiler) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/cxx-compiler.svg)](https://anaconda.org/conda-forge/cxx-compiler) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/cxx-compiler.svg)](https://anaconda.org/conda-forge/cxx-compiler) |
@@ -120,16 +112,16 @@ Installing `compilers` from the `conda-forge` channel can be achieved by adding 
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `binutils-meta, c-compiler, compilers, cxx-compiler, fortran-compiler` can be installed with:
+Once the `conda-forge` channel has been enabled, `c-compiler, compilers, cxx-compiler, fortran-compiler` can be installed with:
 
 ```
-conda install binutils-meta c-compiler compilers cxx-compiler fortran-compiler
+conda install c-compiler compilers cxx-compiler fortran-compiler
 ```
 
-It is possible to list all of the versions of `binutils-meta` available on your platform with:
+It is possible to list all of the versions of `c-compiler` available on your platform with:
 
 ```
-conda search binutils-meta --channel conda-forge
+conda search c-compiler --channel conda-forge
 ```
 
 
@@ -147,7 +139,7 @@ A feedstock is made up of a conda recipe (the instructions on what and how to bu
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/)
-and [TravisCI](https://travis-ci.org/) it is possible to build and upload installable
+and [TravisCI](https://travis-ci.com/) it is possible to build and upload installable
 packages to the [conda-forge](https://anaconda.org/conda-forge)
 [Anaconda-Cloud](https://anaconda.org/) channel for Linux, Windows and OSX respectively.
 

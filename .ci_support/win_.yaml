@@ -1,15 +1,12 @@
 c_compiler:
-- vs2015
+- vs2017
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2015
+- vs2017
 fortran_compiler:
 - flang
 fortran_compiler_version:
 - '5'
-zip_keys:
-- - c_compiler
-  - cxx_compiler
