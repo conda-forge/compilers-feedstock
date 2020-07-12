@@ -45,6 +45,7 @@ outputs:
         - binutils             # [linux]
         - cctools >=949.0.1    # [osx]
         - ld64 >=530           # [osx]
+        - llvm-openmp          # [osx]
     script: build-symlinks.sh  # [unix]
     test:
       commands:
@@ -123,6 +124,7 @@ outputs:
         - binutils             # [linux]
         - cctools >=949.0.1    # [osx]
         - ld64 >=530           # [osx]
+        - llvm-openmp          # [osx]
     script: build-symlinks.sh  # [linux] gfortran is already available on OSX
     test:
       commands:
