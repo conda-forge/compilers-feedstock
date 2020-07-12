@@ -4,7 +4,7 @@
 
 {% set commands = {
   'c-compiler': {
-    'gcc': ['cc', 'ct-ng.config', 'cpp', 'gcc', 'gcc-ar', 'gcc-nm',
+    'gcc': ['cc', 'cpp', 'gcc', 'gcc-ar', 'gcc-nm',
               'gcc-ranlib', 'gcov', 'gcov-dump', 'gcov-tool'],
     'clang': ['clang'],
     'vs2008': [],
