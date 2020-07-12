@@ -3,16 +3,6 @@
 {% set fortran_compiler = compiler('fortran').split('_')[0] %}
 
 {% set commands = {
-  'binutils-meta': {
-    'linux': ['ar', 'as', 'ld', 'nm', 'size', 'strings', 'strip',
-              'addr2line', 'c++filt', 'elfedit', 'gprof', 'ld.bfd',
-              'objcopy', 'objdump', 'ranlib', 'readelf'] +
-              ([] if target_platform == 'linux-ppc64le' else ['dwp', 'ld.gold']),
-    'osx': ['ar', 'as', 'ld', 'nm', 'size', 'strings', 'strip',
-            'checksyms', 'codesign_allocate', 'indr', 'install_name_tool',
-            'libtool', 'lipo', 'nmedit', 'otool', 'pagestuff', 'ranlib',
-            'redo_prebinding', 'seg_addr_table', 'seg_hack', 'segedit'],
-  },
   'c-compiler': {
     'gcc': ['cc', 'ct-ng.config', 'cpp', 'gcc', 'gcc-ar', 'gcc-nm',
               'gcc-ranlib', 'gcov', 'gcov-dump', 'gcov-tool'],
@@ -36,58 +26,25 @@
 
 package:
   name: compilers
-  version: 1.0.4
+  version: 1.1.0
 
 build:
    number: 0
 
 outputs:
-  - name: binutils-meta
-    requirements:
-      host:
-        - binutils_{{ target_platform }}  # [linux]
-        - cctools  # [osx]
-        - ld64  # [osx]
-      run:
-        - binutils_{{ target_platform }}  # [linux]
-        - cctools  # [osx]
-        - ld64  # [osx]
-    script: build-symlinks.sh  # [unix]
-    build:
-      skip: True  # [not unix]
-    test:
-      commands:
-        - $LD --help  # [linux]
-{%- for command in commands['binutils-meta']['linux'] %}  # [linux]
-{%- for command in commands['binutils-meta']['osx'] %}  # [osx]
-        - {{ command }} --help > /dev/null  # [linux] Return code for --help is 1 on OSX
-        - echo "Checking {{ command }} resolves to a path containing ${BUILD}"  # [unix]
-        - readlink $(which {{ command }}) | grep -q "${BUILD}"  # [unix]
-{%- endfor %}  # [linux]
-{%- endfor %}  # [osx]
-    about:
-      home: https://conda-forge.org
-      license: BSD
-      summary: A metapackage to obtain binutils
-      description: |
-        This package is a generic way to obtain binutils for your system
-        that conda-forge used to compile its ecosystem.  This compiler is,
-        therefore, guaranteed to be ABI compatible with the conda packages
-        you have installed.
-
-        This compiler metapackage is a convenience ONLY for users.
-        Do NOT use this package as a build or host dependency in other
-        recipes.
-
   - name: c-compiler
     requirements:
       host:
         - {{ compiler('c') }}
         # Depend on the other metapackages to prevent making duplicate symlinks
-        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
+        - binutils             # [linux]
+        - cctools >=949.0.1    # [osx]
+        - ld64 >=530           # [osx]
       run:
         - {{ compiler('c') }}
-        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
+        - binutils             # [linux]
+        - cctools >=949.0.1    # [osx]
+        - ld64 >=530           # [osx]
     script: build-symlinks.sh  # [unix]
     test:
       commands:
@@ -121,11 +78,10 @@ outputs:
       host:
         - {{ compiler('cxx') }}
         # Depend on the other metapackages to prevent making duplicate symlinks
-        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
         - {{ pin_subpackage('c-compiler', exact=True) }}  # [linux]
       run:
         - {{ compiler('cxx') }}
-        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
+        - {{ pin_subpackage('c-compiler', exact=True) }}  # [unix]
     script: build-symlinks.sh  # [unix]
     test:
       commands:
@@ -159,10 +115,14 @@ outputs:
       host:
         - {{ compiler('fortran') }}
         # Depend on the other metapackages to prevent making duplicate symlinks
-        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
+        - binutils             # [linux]
+        - cctools >=949.0.1    # [osx]
+        - ld64 >=530           # [osx]
       run:
         - {{ compiler('fortran') }}
-        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
+        - binutils             # [linux]
+        - cctools >=949.0.1    # [osx]
+        - ld64 >=530           # [osx]
     script: build-symlinks.sh  # [linux] gfortran is already available on OSX
     test:
       commands:
@@ -189,7 +149,6 @@ outputs:
   - name: compilers
     requirements:
       run:
-        - {{ pin_subpackage('binutils-meta', exact=True) }}  # [unix]
         - {{ pin_subpackage('c-compiler', exact=True) }}
         - {{ pin_subpackage('cxx-compiler', exact=True) }}
         - {{ pin_subpackage('fortran-compiler', exact=True) }}
