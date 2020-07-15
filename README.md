@@ -190,5 +190,6 @@ Feedstock Maintainers
 
 * [@chrisburr](https://github.com/chrisburr/)
 * [@duncanmmacleod](https://github.com/duncanmmacleod/)
+* [@isuruf](https://github.com/isuruf/)
 * [@scopatz](https://github.com/scopatz/)
 
