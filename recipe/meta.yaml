@@ -26,7 +26,7 @@
 
 package:
   name: compilers
-  version: 1.1.3
+  version: 1.2.0
 
 build:
    number: 0
@@ -119,12 +119,14 @@ outputs:
         - binutils             # [linux]
         - cctools >=949.0.1    # [osx]
         - ld64 >=530           # [osx]
+        - {{ pin_subpackage('c-compiler', exact=True) }}  # [linux]
       run:
         - {{ compiler('fortran') }}
         - binutils             # [linux]
         - cctools >=949.0.1    # [osx]
         - ld64 >=530           # [osx]
         - llvm-openmp          # [osx]
+        - {{ pin_subpackage('c-compiler', exact=True) }}  # [linux]
     script: build-symlinks.sh  # [linux] gfortran is already available on OSX
     test:
       commands:
