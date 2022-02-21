@@ -37,7 +37,7 @@ outputs:
       run:
         - {{ compiler('c') }}
         - binutils             # [linux]
-        - gcc                  # [linux]
+        - gcc >=10             # [linux]
         - cctools >=949.0.1    # [osx]
         - ld64 >=530           # [osx]
         - llvm-openmp          # [osx]
@@ -66,7 +66,7 @@ outputs:
       run:
         - {{ compiler('cxx') }}
         - {{ pin_subpackage('c-compiler', exact=True) }}  # [unix]
-        - gxx                  # [linux]
+        - gxx >=10  # [linux]
     test:
       commands:
         - $CXX --help  # [unix]
