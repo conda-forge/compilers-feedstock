@@ -1,11 +1,33 @@
+About compilers-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/compilers-feedstock/blob/main/LICENSE.txt)
+
 About compilers
-===============
+---------------
+
+Home: https://conda-forge.org
+
+Package license: BSD-3-Clause
+
+Summary: A metapackage to obtain compilers
+
+This package is a generic way to obtain the compilers for your system
+that conda-forge used to compile its ecosystem. These compilers are,
+therefore, guaranteed to be ABI compatible with the conda packages
+you have installed.
+
+These compiler metapackages are a convenience ONLY for users.
+Do NOT use these packages as a build or host dependencies in other
+recipes.  Use the compiler Jinja template function instead.
+For C++ for example, use compiler('cxx') as usual.
+
+About c-compiler
+----------------
 
 Home: https://conda-forge.org
 
 Package license: BSD
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/compilers-feedstock/blob/main/LICENSE.txt)
 
 Summary: A metapackage to obtain a C compiler
 
@@ -17,6 +39,42 @@ you have installed.
 This compiler metapackage is a convenience ONLY for users.
 Do NOT use this package as a build or host dependency in other
 recipes.  Use the Jinja template function compiler('c') instead.
+
+About cxx-compiler
+------------------
+
+Home: https://conda-forge.org
+
+Package license: BSD
+
+Summary: A metapackage to obtain a C++ compiler
+
+This package is a generic way to obtain the C++ compiler for your system
+that conda-forge used to compile its ecosystem.  This compiler is,
+therefore, guaranteed to be ABI compatible with the conda packages
+you have installed.
+
+This compiler metapackage is a convenience ONLY for users.
+Do NOT use this package as a build or host dependency in other
+recipes.  Use the Jinja template function compiler('cxx') instead.
+
+About fortran-compiler
+----------------------
+
+Home: https://conda-forge.org
+
+Package license: BSD
+
+Summary: A metapackage to obtain a Fortran compiler
+
+This package is a generic way to obtain the Fortran compiler for your
+system that conda-forge used to compile its ecosystem.  This compiler
+is, therefore, guaranteed to be ABI compatible with the conda packages
+you have installed.
+
+This compiler metapackage is a convenience ONLY for users.
+Do NOT use this package as a build or host dependency in other
+recipes.  Use the Jinja template function compiler('fortran') instead.
 
 
 Current build status
