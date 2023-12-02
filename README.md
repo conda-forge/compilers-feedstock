@@ -3,6 +3,7 @@ About compilers-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/compilers-feedstock/blob/main/LICENSE.txt)
 
+
 About compilers
 ---------------
 
@@ -22,6 +23,7 @@ Do NOT use these packages as a build or host dependencies in other
 recipes.  Use the compiler Jinja template function instead.
 For C++ for example, use compiler('cxx') as usual.
 
+
 About c-compiler
 ----------------
 
@@ -40,6 +42,7 @@ This compiler metapackage is a convenience ONLY for users.
 Do NOT use this package as a build or host dependency in other
 recipes.  Use the Jinja template function compiler('c') instead.
 
+
 About cxx-compiler
 ------------------
 
@@ -57,6 +60,7 @@ you have installed.
 This compiler metapackage is a convenience ONLY for users.
 Do NOT use this package as a build or host dependency in other
 recipes.  Use the Jinja template function compiler('cxx') instead.
+
 
 About fortran-compiler
 ----------------------
@@ -227,7 +231,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
