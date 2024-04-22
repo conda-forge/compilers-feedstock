@@ -49,7 +49,7 @@ outputs:
 {%- endfor %}  # [unix]
     about:
       home: https://conda-forge.org
-      license: BSD
+      license: BSD-3-Clause
       summary: A metapackage to obtain a C compiler
       description: |
         This package is a generic way to obtain the C compiler for your system
@@ -75,7 +75,7 @@ outputs:
 {%- endfor %}  # [unix]
     about:
       home: https://conda-forge.org
-      license: BSD
+      license: BSD-3-Clause
       summary: A metapackage to obtain a C++ compiler
       description: |
         This package is a generic way to obtain the C++ compiler for your system
@@ -105,7 +105,7 @@ outputs:
 {%- endfor %}  # [unix]
     about:
       home: https://conda-forge.org
-      license: BSD
+      license: BSD-3-Clause
       summary: A metapackage to obtain a Fortran compiler
       description: |
         This package is a generic way to obtain the Fortran compiler for your
