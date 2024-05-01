@@ -29,7 +29,7 @@ About c-compiler
 
 Home: https://conda-forge.org
 
-Package license: BSD
+Package license: BSD-3-Clause
 
 Summary: A metapackage to obtain a C compiler
 
@@ -48,7 +48,7 @@ About cxx-compiler
 
 Home: https://conda-forge.org
 
-Package license: BSD
+Package license: BSD-3-Clause
 
 Summary: A metapackage to obtain a C++ compiler
 
@@ -67,7 +67,7 @@ About fortran-compiler
 
 Home: https://conda-forge.org
 
-Package license: BSD
+Package license: BSD-3-Clause
 
 Summary: A metapackage to obtain a Fortran compiler
 
