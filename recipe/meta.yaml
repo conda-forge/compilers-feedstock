@@ -20,6 +20,8 @@
   }[cxx_compiler],
   'fortran-compiler': {
     'gfortran': ['gfortran'],
+    # wait until flang v20 to uncomment
+    # 'flang': ['flang'],
   }[fortran_compiler],
 } %}
 
@@ -99,7 +101,8 @@ outputs:
         - {{ pin_subpackage('c-compiler', exact=True) }}  # [linux]
     test:
       commands:
-        - $FC --help  # [unix]
+        - $FC --help        # [unix]
+        - "%FC% --help"     # [win]
 {%- for command in commands['fortran-compiler'] %}  # [unix]
         - {{ command }} --help > /dev/null  # [unix]
 {%- endfor %}  # [unix]
@@ -125,9 +128,10 @@ outputs:
         - {{ pin_subpackage('fortran-compiler', exact=True) }}
     test:
       commands:
-        - $CC --help  # [unix]
-        - $CXX --help  # [unix]
-        - $FC --help  # [unix]
+        - $CC --help        # [unix]
+        - $CXX --help       # [unix]
+        - $FC --help        # [unix]
+        - "%FC% --help"     # [win]
 
 about:
   home: https://conda-forge.org
