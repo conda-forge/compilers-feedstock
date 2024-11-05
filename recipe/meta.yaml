@@ -20,10 +20,10 @@
   }[cxx_compiler],
   'fortran-compiler': {
     'gfortran': ['gfortran'],
-    # wait until flang v20 to uncomment
-    # 'flang': ['flang'],
   }[fortran_compiler],
 } %}
+    # wait until flang v20 to add under 'fortran-compiler'
+    # 'flang': ['flang'],
 
 
 package:
