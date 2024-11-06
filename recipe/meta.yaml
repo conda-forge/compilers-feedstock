@@ -22,6 +22,8 @@
     'gfortran': ['gfortran'],
   }[fortran_compiler],
 } %}
+    # wait until flang v20 to add under 'fortran-compiler'
+    # 'flang': ['flang'],
 
 
 package:
@@ -29,7 +31,7 @@ package:
   version: 1.8.0
 
 build:
-   number: 1
+   number: 2
 
 outputs:
   - name: c-compiler
@@ -99,7 +101,8 @@ outputs:
         - {{ pin_subpackage('c-compiler', exact=True) }}  # [linux]
     test:
       commands:
-        - $FC --help  # [unix]
+        - $FC --help        # [unix]
+        - "%FC% --help"     # [win]
 {%- for command in commands['fortran-compiler'] %}  # [unix]
         - {{ command }} --help > /dev/null  # [unix]
 {%- endfor %}  # [unix]
@@ -125,9 +128,10 @@ outputs:
         - {{ pin_subpackage('fortran-compiler', exact=True) }}
     test:
       commands:
-        - $CC --help  # [unix]
-        - $CXX --help  # [unix]
-        - $FC --help  # [unix]
+        - $CC --help        # [unix]
+        - $CXX --help       # [unix]
+        - $FC --help        # [unix]
+        - "%FC% --help"     # [win]
 
 about:
   home: https://conda-forge.org
