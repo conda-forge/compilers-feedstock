@@ -2,8 +2,6 @@ c_compiler:
 - gcc
 c_compiler_version:
 - '14'
-cdt_name:
-- conda
 channel_sources:
 - conda-forge
 channel_targets:
