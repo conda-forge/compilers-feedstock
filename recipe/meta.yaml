@@ -1,32 +1,6 @@
-{% set c_compiler = compiler('c').split('_')[0] %}
-{% set cxx_compiler = compiler('cxx').split('_')[0] %}
-{% set fortran_compiler = compiler('fortran').split('_')[0] %}
-
-{% set commands = {
-  'c-compiler': {
-    'gcc': ['cc', 'cpp', 'gcc', 'gcc-ar', 'gcc-nm',
-              'gcc-ranlib', 'gcov', 'gcov-dump', 'gcov-tool'],
-    'clang': ['clang'],
-    'vs2008': [],
-    'vs2010': [],
-    'vs2015': [],
-  }[c_compiler],
-  'cxx-compiler': {
-    'gxx': ['g++', 'c++'],
-    'clangxx': ['clang++'],
-    'vs2008': [],
-    'vs2010': [],
-    'vs2015': [],
-  }[cxx_compiler],
-  'fortran-compiler': {
-    'gfortran': ['gfortran'],
-  }[fortran_compiler],
-} %}
-
-
 package:
   name: compilers
-  version: 1.11.0
+  version: 2.0.0
 
 build:
    number: 0
@@ -35,18 +9,17 @@ outputs:
   - name: c-compiler
     requirements:
       run:
-        - {{ compiler('c') }}
-        - binutils             # [linux]
-        - gcc                  # [linux]
-        - cctools >=949.0.1    # [osx]
-        - ld64 >=530           # [osx]
-        - llvm-openmp          # [osx]
+        - {{ compiler('c') }}  # [win]
+        - {{ c_compiler }}  {{ c_compiler_version }}.*  # [unix]
     test:
       commands:
-        - $CC --help  # [unix]
-{%- for command in commands['c-compiler'] %}  # [unix]
-        - {{ command }} --help > /dev/null  # [unix]
-{%- endfor %}  # [unix]
+        - cc --help > /dev/null            # [linux]
+        - cpp --help > /dev/null           # [linux]
+        - gcc --help > /dev/null           # [linux]
+        - gcc-ar --help > /dev/null        # [linux]
+        - gcc-nm --help > /dev/null        # [linux]
+        - gcc-ranlib --help > /dev/null    # [linux]
+        - clang --help > /dev/null         # [osx]
     about:
       home: https://conda-forge.org
       license: BSD-3-Clause
@@ -64,15 +37,13 @@ outputs:
   - name: cxx-compiler
     requirements:
       run:
-        - {{ compiler('cxx') }}
-        - {{ pin_subpackage('c-compiler', exact=True) }}  # [unix]
-        - gxx                  # [linux]
+        - {{ compiler('cxx') }}  # [win]
+        - {{ cxx_compiler }}  {{ cxx_compiler_version }}.*  # [unix]
     test:
       commands:
-        - $CXX --help  # [unix]
-{%- for command in commands['cxx-compiler'] %}  # [unix]
-        - {{ command }} --help > /dev/null  # [unix]
-{%- endfor %}  # [unix]
+        - g++ --help > /dev/null      # [linux]
+        - c++ --help > /dev/null      # [linux]
+        - clang++ --help > /dev/null  # [osx]
     about:
       home: https://conda-forge.org
       license: BSD-3-Clause
@@ -90,19 +61,11 @@ outputs:
   - name: fortran-compiler
     requirements:
       run:
-        - {{ compiler('fortran') }}
-        - binutils             # [linux]
-        - cctools >=949.0.1    # [osx]
-        - ld64 >=530           # [osx]
-        - llvm-openmp          # [osx]
-        - gfortran             # [linux or osx]
-        - {{ pin_subpackage('c-compiler', exact=True) }}  # [linux]
+        - {{ compiler('fortran') }}  # [win]
+        - {{ fortran_compiler }}  {{ fortran_compiler_version }}.*  # [unix]
     test:
       commands:
-        - $FC --help  # [unix]
-{%- for command in commands['fortran-compiler'] %}  # [unix]
-        - {{ command }} --help > /dev/null  # [unix]
-{%- endfor %}  # [unix]
+        - gfortran --help > /dev/null  # [unix]
     about:
       home: https://conda-forge.org
       license: BSD-3-Clause
@@ -125,9 +88,7 @@ outputs:
         - {{ pin_subpackage('fortran-compiler', exact=True) }}
     test:
       commands:
-        - $CC --help  # [unix]
-        - $CXX --help  # [unix]
-        - $FC --help  # [unix]
+        - echo hello
 
 about:
   home: https://conda-forge.org
