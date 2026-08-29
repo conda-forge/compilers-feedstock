@@ -1,0 +1,14 @@
+c_compiler:
+- vs2022
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- vs2022
+fortran_compiler:
+- flang
+fortran_compiler_version:
+- '22'
+target_platform:
+- win-arm64
